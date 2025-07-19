@@ -7,45 +7,43 @@
   <style>
     @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css');
 
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       font-family: 'Vazir', Tahoma, sans-serif;
       direction: rtl;
       margin: 0;
-      background: linear-gradient(135deg, #dcedc8, #a5d6a7);
+      background: linear-gradient(135deg, #121212, #30475E);
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      overflow: hidden;
     }
 
     .form-card {
-      background: white;
+      background: #F5F5F5;
       padding: 40px 30px;
       border-radius: 20px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
       max-width: 400px;
       width: 100%;
       text-align: center;
-      transition: all 0.3s ease-in-out;
+      position: relative;
+      animation: floatCard 3s ease-in-out infinite alternate;
     }
 
-    .form-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    @keyframes floatCard {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-8px); }
     }
 
     h2 {
       font-size: 2rem;
-      color: #2e7d32;
+      color: #F05454;
       margin-bottom: 10px;
     }
 
     p {
-      color: #555;
+      color: #333;
       margin-bottom: 30px;
     }
 
@@ -60,7 +58,7 @@
     }
 
     input:focus {
-      border-color: #66bb6a;
+      border-color: #F05454;
       outline: none;
     }
 
@@ -69,19 +67,18 @@
       padding: 12px;
       font-size: 16px;
       margin-top: 20px;
-      background: #43a047;
+      background: #F05454;
       color: white;
       border: none;
       border-radius: 25px;
       cursor: pointer;
       font-weight: bold;
-      box-shadow: 0 5px 15px rgba(67, 160, 71, 0.4);
-      transition: background 0.3s ease, transform 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
     }
 
     button:hover {
-      background: #2e7d32;
       transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(240, 84, 84, 0.5);
     }
 
     .error {
@@ -90,12 +87,24 @@
       display: none;
     }
 
+    .vina-logo {
+      width: 80px;
+      margin: 0 auto 20px;
+      animation: spin 8s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotateY(0); }
+      100% { transform: rotateY(360deg); }
+    }
+
   </style>
 </head>
 <body>
   <div class="form-card">
+    <img src="logo.png" alt="VINA Logo" class="vina-logo" />
     <h2>سلام 👋</h2>
-    <p>لطفاً نام و رشته‌ات رو وارد کن</p>
+    <p>نام و رشتتو وارد کن تا شروع کنیم</p>
 
     <input type="text" id="name" placeholder="اسمتو بزن">
     <input type="text" id="field" placeholder="رشتتو وارد کن">
