@@ -1,52 +1,121 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>همکاری با من</title>
   <style>
+    @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css');
+
     body {
-      font-family: sans-serif;
+      font-family: 'Vazir', Tahoma, sans-serif;
       direction: rtl;
-      background-color: #ffffff;
-      padding: 40px;
-      line-height: 2;
-      text-align: center;
+      background: linear-gradient(135deg, #e0f7fa, #80deea);
+      margin: 0;
+      padding: 50px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #333;
     }
+
     .card {
-      background: #f9f9f9;
-      border-radius: 15px;
-      padding: 30px;
+      background: #fff;
+      border-radius: 25px;
+      padding: 40px 50px;
       max-width: 600px;
-      margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 100%;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 50px rgba(0,0,0,0.15);
+    }
+
+    h2 {
+      font-size: 2.8rem;
+      margin-bottom: 25px;
+      color: #00796b;
+    }
+
+    p {
+      font-size: 1.25rem;
+      line-height: 1.8;
+      color: #555;
+      white-space: pre-wrap;
+    }
+
+    .btn-contact {
+      margin-top: 30px;
+      display: inline-block;
+      background: #00796b;
+      color: white;
+      padding: 15px 40px;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(0,121,107,0.4);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn-contact:hover {
+      background: #004d40;
+      box-shadow: 0 8px 20px rgba(0,77,64,0.6);
+    }
+
+    /* آیکون ستاره */
+    .star {
+      color: #ffb300;
+      margin-left: 6px;
+      animation: twinkle 2s infinite alternate;
+      display: inline-block;
+    }
+
+    @keyframes twinkle {
+      0% {opacity: 1; transform: scale(1);}
+      100% {opacity: 0.6; transform: scale(1.2);}
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h2 id="title"></h2>
+  <div class="card" role="main" aria-labelledby="title" aria-describedby="message">
+    <h2 id="title">سلام عزیز <span class="star">🌟</span></h2>
     <p id="message"></p>
+    <a href="mailto:your.email@example.com" class="btn-contact" id="contactBtn" style="display:none;">ارسال پیام</a>
   </div>
 
   <script>
     const urlParams = new URLSearchParams(window.location.search);
-    const name = urlParams.get('name');
-    const field = urlParams.get('field');
+    const name = urlParams.get('name') || 'دوست';
+    const field = urlParams.get('field') || 'حوزه کاری شما';
 
-    const title = `سلام ${name} عزیز 🌟`;
+    const title = `سلام ${name} عزیز `;
     const message = `
-خیلی خوشحال شدم که با فردی فعال در زمینه «${field}» آشنا شدم.  
+خیلی خوشحال شدم که با فردی فعال در زمینه «${field}» آشنا شدم.
 من همیشه دنبال همکاری با افراد خلاق و مسئولیت‌پذیر هستم و مطمئنم با هم می‌تونیم پروژه‌های فوق‌العاده‌ای بسازیم.
 
-اگر دوست داشتی همکاری کنیم، خوشحال می‌شم بیشتر با هم صحبت کنیم.  
+اگر دوست داشتی همکاری کنیم، خوشحال می‌شم بیشتر با هم صحبت کنیم.
 رزومه، نمونه‌کار یا هر اطلاعاتی خواستی بفرست برام.
 
 👨‍💻 همکاری، پروژه یا حتی یه صحبت دوستانه... فقط یه پیام فاصله‌ست!
 
 — با احترام 🌱`;
 
-    document.getElementById("title").innerText = title;
+    document.getElementById("title").innerHTML = title + `<span class="star">🌟</span>`;
     document.getElementById("message").innerText = message;
+
+    // نمایش دکمه فقط اگر نام و حوزه کاری مشخص باشند
+    if (name && field) {
+      const contactBtn = document.getElementById("contactBtn");
+      contactBtn.style.display = "inline-block";
+      // اگر خواستی ایمیل خودتو جای your.email@example.com بزاری
+      contactBtn.href = "mailto:your.email@example.com?subject=همکاری با " + encodeURIComponent(name);
+    }
   </script>
 </body>
 </html>
