@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>همکاری با من</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      direction: rtl;
+      background-color: #ffffff;
+      padding: 40px;
+      line-height: 2;
+      text-align: center;
+    }
+    .card {
+      background: #f9f9f9;
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2 id="title"></h2>
+    <p id="message"></p>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const name = urlParams.get('name');
+    const field = urlParams.get('field');
+
+    const title = `سلام ${name} عزیز 🌟`;
+    const message = `
+خیلی خوشحال شدم که با فردی فعال در زمینه «${field}» آشنا شدم.  
+من همیشه دنبال همکاری با افراد خلاق و مسئولیت‌پذیر هستم و مطمئنم با هم می‌تونیم پروژه‌های فوق‌العاده‌ای بسازیم.
+
+اگر دوست داشتی همکاری کنیم، خوشحال می‌شم بیشتر با هم صحبت کنیم.  
+رزومه، نمونه‌کار یا هر اطلاعاتی خواستی بفرست برام.
+
+👨‍💻 همکاری، پروژه یا حتی یه صحبت دوستانه... فقط یه پیام فاصله‌ست!
+
+— با احترام 🌱`;
+
+    document.getElementById("title").innerText = title;
+    document.getElementById("message").innerText = message;
+  </script>
+</body>
+</html>
