@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>پیام مخفی</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f0f0f0;
+      text-align: center;
+      direction: rtl;
+      padding: 50px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+    .result {
+      display: none;
+      margin-top: 40px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>اسمت چیه؟</h1>
+  <input id="name" placeholder="مثلاً: علی">
+  <br>
+  <button onclick="show()">نمایش پیام</button>
+
+  <div class="result" id="result">
+    <p id="text"></p>
+  </div>
+
+  <script>
+    function show() {
+      const name = document.getElementById("name").value.trim();
+      const msg = `سلام ${name} عزیز! می‌دونم امروز روز خاصیه 🌟
+و این پیام فقط برای تو طراحی شده...
+
+(اینجا می‌تونی پیام، شعر یا تبلیغ دلخواهت رو بنویسی 😉)`;
+
+      document.getElementById("text").innerText = msg;
+      document.getElementById("result").style.display = "block";
+    }
+  </script>
+</body>
+</html>
