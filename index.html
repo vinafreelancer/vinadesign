@@ -1,40 +1,122 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>شروع همکاری</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
+    @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css');
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: sans-serif;
+      font-family: 'Vazir', Tahoma, sans-serif;
       direction: rtl;
+      margin: 0;
+      background: linear-gradient(135deg, #dcedc8, #a5d6a7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-card {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+      max-width: 400px;
+      width: 100%;
       text-align: center;
-      padding: 40px;
-      background-color: #f4f4f4;
+      transition: all 0.3s ease-in-out;
     }
-    input, button {
-      padding: 10px;
+
+    .form-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #2e7d32;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 15px;
       font-size: 16px;
-      margin-top: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      transition: border 0.3s ease;
     }
+
+    input:focus {
+      border-color: #66bb6a;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      margin-top: 20px;
+      background: #43a047;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 5px 15px rgba(67, 160, 71, 0.4);
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background: #2e7d32;
+      transform: translateY(-2px);
+    }
+
+    .error {
+      color: red;
+      margin-top: 10px;
+      display: none;
+    }
+
   </style>
 </head>
 <body>
-  <h2>سلام 👋</h2>
-  <p>لطفاً نام و رشته‌ات رو وارد کن</p>
+  <div class="form-card">
+    <h2>سلام 👋</h2>
+    <p>لطفاً نام و رشته‌ات رو وارد کن</p>
 
-  <input type="text" id="name" placeholder="نام شما"><br>
-  <input type="text" id="field" placeholder="رشته کاری شما"><br>
+    <input type="text" id="name" placeholder="اسمتو بزن">
+    <input type="text" id="field" placeholder="رشتتو وارد کن">
 
-  <button onclick="goToProfile()">بزن بریم!</button>
+    <button onclick="goToProfile()">بزن بریم!</button>
+    <div class="error" id="errorMsg">لطفاً هر دو فیلد رو پر کن :)</div>
+  </div>
 
   <script>
     function goToProfile() {
       const name = document.getElementById('name').value.trim();
       const field = document.getElementById('field').value.trim();
+      const errorMsg = document.getElementById('errorMsg');
+
       if (name && field) {
         window.location.href = `profile.html?name=${encodeURIComponent(name)}&field=${encodeURIComponent(field)}`;
       } else {
-        alert("لطفاً هر دو فیلد رو پر کن :)");
+        errorMsg.style.display = "block";
+        setTimeout(() => {
+          errorMsg.style.display = "none";
+        }, 3000);
       }
     }
   </script>
