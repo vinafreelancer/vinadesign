@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <title>شروع همکاری</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
   <style>
     @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css');
 
@@ -15,100 +16,69 @@
     body {
       margin: 0;
       direction: rtl;
-      background: radial-gradient(ellipse at bottom, #121212 0%, #0a0a0a 100%);
-      overflow: hidden;
+      background: linear-gradient(to top left, #0f2027, #203a43, #2c5364);
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      position: relative;
-    }
-
-    .stars {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: transparent url('https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/media/stars.png') repeat;
-      animation: moveStars 100s linear infinite;
-      opacity: 0.2;
-      z-index: 0;
-    }
-
-    @keyframes moveStars {
-      from { background-position: 0 0; }
-      to { background-position: -10000px 10000px; }
     }
 
     .form-card {
-      background: #f5f5f5;
+      background: #f8f8f8;
       padding: 40px 30px;
-      border-radius: 20px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      border-radius: 16px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.2);
       max-width: 400px;
       width: 90%;
       text-align: center;
-      position: relative;
       z-index: 1;
-      animation: fadeInUp 1.5s ease forwards;
     }
 
-    .form-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    h2 {
-      font-size: 2rem;
-      color: #F05454;
+    .form-card img {
+      max-width: 120px;
       margin-bottom: 10px;
     }
 
-    p {
-      color: #333;
-      margin-bottom: 30px;
+    h2 {
+      font-size: 1.6rem;
+      color: #F05454;
+      margin: 10px 0;
     }
 
-    label {
-      display: block;
-      text-align: right;
-      font-size: 14px;
-      margin: 8px 0 4px;
-      color: #444;
+    p {
+      color: #555;
+      font-size: 0.95rem;
+      margin-bottom: 25px;
     }
 
     input {
       width: 100%;
-      padding: 12px 15px;
-      font-size: 16px;
-      margin-bottom: 12px;
+      padding: 12px 16px;
+      font-size: 15px;
+      margin-bottom: 15px;
       border: 1px solid #ccc;
-      border-radius: 12px;
+      border-radius: 10px;
       background-color: #eef1ff;
-      transition: all 0.3s ease;
+      transition: border-color 0.3s ease, background-color 0.3s ease;
     }
 
     input:focus {
       border-color: #F05454;
-      outline: none;
       background-color: #fff;
+      outline: none;
     }
 
     button {
       width: 100%;
       padding: 12px;
-      font-size: 16px;
+      font-size: 15px;
+      margin-top: 10px;
       background: #F05454;
       color: white;
       border: none;
       border-radius: 25px;
       cursor: pointer;
       font-weight: bold;
-      box-shadow: 0 5px 15px rgba(240, 84, 84, 0.4);
       transition: background 0.3s ease, transform 0.2s ease;
     }
 
@@ -119,9 +89,9 @@
 
     .error {
       color: red;
-      margin-top: 10px;
-      display: none;
       font-size: 14px;
+      margin-top: 8px;
+      display: none;
     }
 
     @media (max-width: 480px) {
@@ -130,45 +100,43 @@
       }
 
       h2 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="stars"></div>
-
   <div class="form-card">
-    <h2>سلام 👋</h2>
-    <p>لطفاً نام و رشته‌ات رو وارد کن</p>
+    <!-- می‌تونی تصویر لوگو رو جایگزین این آدرس کنی -->
+    <img src="https://via.placeholder.com/100x40?text=Logo" alt="لوگو">
 
-    <label for="name">نام</label>
-    <input type="text" id="name" placeholder="اسمتو بزن">
+    <h2>👋 سلام</h2>
+    <p>نام و رشتتو وارد کن تا شروع کنیم</p>
 
-    <label for="field">رشته</label>
-    <input type="text" id="field" placeholder="رشتتو وارد کن">
-
-    <button id="submitBtn">بزن بریم!</button>
+    <input type="text" id="name" placeholder="نام">
+    <input type="text" id="field" placeholder="رشته">
+    
+    <button onclick="goToProfile()">بزن بریم!</button>
     <div class="error" id="errorMsg">لطفاً هر دو فیلد رو پر کن :)</div>
   </div>
 
   <script>
-    document.getElementById('submitBtn').addEventListener('click', () => {
+    function goToProfile() {
       const name = document.getElementById('name').value.trim();
       const field = document.getElementById('field').value.trim();
       const errorMsg = document.getElementById('errorMsg');
 
       if (name && field) {
-        const safeName = encodeURIComponent(name);
-        const safeField = encodeURIComponent(field);
-        window.location.href = `profile.html?name=${safeName}&field=${safeField}`;
+        const encodedName = encodeURIComponent(name);
+        const encodedField = encodeURIComponent(field);
+        window.location.href = `profile.html?name=${encodedName}&field=${encodedField}`;
       } else {
         errorMsg.style.display = "block";
         setTimeout(() => {
           errorMsg.style.display = "none";
         }, 3000);
       }
-    });
+    }
   </script>
 </body>
 </html>
