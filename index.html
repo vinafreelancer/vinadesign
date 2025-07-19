@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <title>شروع همکاری</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
   <style>
     @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css');
 
@@ -25,17 +24,14 @@
       position: relative;
     }
 
-    /* ستاره‌ها */
     .stars {
-      width: 100%;
-      height: 100%;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background: transparent url('https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/media/stars.png') repeat;
       animation: moveStars 100s linear infinite;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 0;
       opacity: 0.2;
+      z-index: 0;
     }
 
     @keyframes moveStars {
@@ -49,7 +45,7 @@
       border-radius: 20px;
       box-shadow: 0 15px 35px rgba(0,0,0,0.3);
       max-width: 400px;
-      width: 100%;
+      width: 90%;
       text-align: center;
       position: relative;
       z-index: 1;
@@ -62,14 +58,8 @@
     }
 
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     h2 {
@@ -83,15 +73,23 @@
       margin-bottom: 30px;
     }
 
+    label {
+      display: block;
+      text-align: right;
+      font-size: 14px;
+      margin: 8px 0 4px;
+      color: #444;
+    }
+
     input {
       width: 100%;
       padding: 12px 15px;
       font-size: 16px;
-      margin: 10px 0;
+      margin-bottom: 12px;
       border: 1px solid #ccc;
       border-radius: 12px;
-      transition: border 0.3s ease;
       background-color: #eef1ff;
+      transition: all 0.3s ease;
     }
 
     input:focus {
@@ -104,7 +102,6 @@
       width: 100%;
       padding: 12px;
       font-size: 16px;
-      margin-top: 20px;
       background: #F05454;
       color: white;
       border: none;
@@ -124,40 +121,54 @@
       color: red;
       margin-top: 10px;
       display: none;
+      font-size: 14px;
+    }
+
+    @media (max-width: 480px) {
+      .form-card {
+        padding: 30px 20px;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- ستاره‌ها در بک‌گراند -->
   <div class="stars"></div>
 
-  <!-- کارت فرم -->
   <div class="form-card">
     <h2>سلام 👋</h2>
     <p>لطفاً نام و رشته‌ات رو وارد کن</p>
 
+    <label for="name">نام</label>
     <input type="text" id="name" placeholder="اسمتو بزن">
+
+    <label for="field">رشته</label>
     <input type="text" id="field" placeholder="رشتتو وارد کن">
 
-    <button onclick="goToProfile()">بزن بریم!</button>
+    <button id="submitBtn">بزن بریم!</button>
     <div class="error" id="errorMsg">لطفاً هر دو فیلد رو پر کن :)</div>
   </div>
 
   <script>
-    function goToProfile() {
+    document.getElementById('submitBtn').addEventListener('click', () => {
       const name = document.getElementById('name').value.trim();
       const field = document.getElementById('field').value.trim();
       const errorMsg = document.getElementById('errorMsg');
 
       if (name && field) {
-        window.location.href = `profile.html?name=${encodeURIComponent(name)}&field=${encodeURIComponent(field)}`;
+        const safeName = encodeURIComponent(name);
+        const safeField = encodeURIComponent(field);
+        window.location.href = `profile.html?name=${safeName}&field=${safeField}`;
       } else {
         errorMsg.style.display = "block";
         setTimeout(() => {
           errorMsg.style.display = "none";
         }, 3000);
       }
-    }
+    });
   </script>
 </body>
 </html>
