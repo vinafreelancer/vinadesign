@@ -6,50 +6,86 @@
   <style>
     @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css');
 
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Vazir', Tahoma, sans-serif;
       direction: rtl;
-      background: linear-gradient(135deg, #e0f7fa, #80deea);
       margin: 0;
-      padding: 50px 20px;
+      padding: 0;
+      background: radial-gradient(circle at center, #121212 0%, #0b0c10 100%);
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      color: #333;
+      position: relative;
+      overflow: hidden;
+      color: #F5F5F5;
+    }
+
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: transparent url('https://i.ibb.co/z7W68P9/stars.png') repeat;
+      z-index: 0;
+      animation: moveStars 80s linear infinite;
+      opacity: 0.4;
+    }
+
+    @keyframes moveStars {
+      from { background-position: 0 0; }
+      to { background-position: 10000px 5000px; }
     }
 
     .card {
-      background: #fff;
+      position: relative;
+      z-index: 2;
+      background: rgba(48, 71, 94, 0.9);
       border-radius: 25px;
       padding: 40px 50px;
       max-width: 600px;
-      width: 100%;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      width: 90%;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 40px rgba(240, 84, 84, 0.3);
       text-align: center;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeInUp 1.6s ease-out both;
     }
 
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 30px 50px rgba(0,0,0,0.15);
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
 
     h2 {
-      font-size: 2.8rem;
+      font-size: 2.4rem;
       margin-bottom: 25px;
-      color: #00796b;
+      color: #F05454;
+      animation: flicker 2s infinite;
+    }
+
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
     }
 
     p {
-      font-size: 1.25rem;
-      line-height: 1.8;
-      color: #555;
+      font-size: 1.1rem;
+      line-height: 1.9;
+      color: #F5F5F5;
       white-space: pre-wrap;
     }
 
     a {
-      color: #00796b;
+      color: #F5F5F5;
       font-weight: bold;
       text-decoration: none;
     }
@@ -69,9 +105,31 @@
       0% {opacity: 1; transform: scale(1);}
       100% {opacity: 0.6; transform: scale(1.2);}
     }
+
+    .sparkle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      animation: sparkleAnim 3s infinite ease-in-out;
+      border-radius: 50%;
+      opacity: 0.8;
+    }
+
+    @keyframes sparkleAnim {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.5); opacity: 0.2; }
+    }
   </style>
 </head>
 <body>
+  <div class="stars"></div>
+  <div class="sparkle" style="top: 10%; left: 15%; animation-delay: 0s;"></div>
+  <div class="sparkle" style="top: 30%; left: 70%; animation-delay: 1s;"></div>
+  <div class="sparkle" style="top: 60%; left: 40%; animation-delay: 2s;"></div>
+  <div class="sparkle" style="top: 75%; left: 85%; animation-delay: 3s;"></div>
+  <div class="sparkle" style="top: 90%; left: 20%; animation-delay: 1.5s;"></div>
+
   <div class="card" role="main" aria-labelledby="title" aria-describedby="message">
     <h2 id="title">سلام <span class="star">🌟</span></h2>
     <p id="message">در حال بارگذاری...</p>
@@ -97,7 +155,7 @@
 - تایپ ویس (صوتی) با دقت بالا 🎧  
 - ساخت پاورپوینت‌های خاص و حرفه‌ای 🎨  
 - انجام پروژه‌های دانشجویی با کیفیت بالا 📚  
-- طراحی بروشور، پوستر، اینفوگرافی و ... 🎯  
+- طراحی بروشور، پوستر، اینفوگرافی و ... 🏇  
 - رفع ارور و مشکلات نرم‌افزاری گوشی و کامپیوترت 🔧
 
 💬 فقط کافیه پیام بدی... سریع و رفیق‌وار راه می‌ندازمش ✅
@@ -106,7 +164,7 @@
 ما رو می‌تونی راحت تو روبیکا دنبال کنی:  
 👉 <a href="https://rubika.ir/Vina_design" target="_blank">Vina_design در روبیکا</a>
 
-🛰️ و اگه روبیکا نداری یا ترجیح می‌دی تو تلگرام باشی، فقط کافیه یه لحظه فیلترشکنتو روشن کنی و بزنی روی لینک زیر:  
+🚀 و اگه روبیکا نداری یا ترجیح می‌دی تو تلگرام باشی، فقط کافیه یه لحظه فیلترشکنتو روشن کنی و بزنی روی لینک زیر:  
 👉 <a href="https://t.me/Vina_design" target="_blank">Vina_design در تلگرام</a>
 
 منتظرم که با هم پروژه‌های خفن بسازیم 😄✌️
