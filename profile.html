@@ -16,7 +16,10 @@
       direction: rtl;
       margin: 0;
       padding: 0;
-      background: #1b1b1b; /* بدون تصویر */
+      background: linear-gradient(135deg, #1f1c2c, #928DAB); /* گرادیان جذاب و لطیف */
+      background-attachment: fixed;
+      background-size: 400% 400%;
+      animation: gradientFlow 20s ease infinite;
       color: #F5F5F5;
       min-height: 100vh;
       display: flex;
@@ -24,6 +27,12 @@
       align-items: flex-start;
       padding-top: 60px;
       overflow-y: auto;
+    }
+
+    @keyframes gradientFlow {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
     }
 
     .card {
