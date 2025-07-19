@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>شروع همکاری</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      direction: rtl;
+      text-align: center;
+      padding: 40px;
+      background-color: #f4f4f4;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>سلام 👋</h2>
+  <p>لطفاً نام و رشته‌ات رو وارد کن</p>
+
+  <input type="text" id="name" placeholder="نام شما"><br>
+  <input type="text" id="field" placeholder="رشته کاری شما"><br>
+
+  <button onclick="goToProfile()">بزن بریم!</button>
+
+  <script>
+    function goToProfile() {
+      const name = document.getElementById('name').value.trim();
+      const field = document.getElementById('field').value.trim();
+      if (name && field) {
+        window.location.href = `profile.html?name=${encodeURIComponent(name)}&field=${encodeURIComponent(field)}`;
+      } else {
+        alert("لطفاً هر دو فیلد رو پر کن :)");
+      }
+    }
+  </script>
+</body>
+</html>
