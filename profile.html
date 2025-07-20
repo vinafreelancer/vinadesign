@@ -9,6 +9,7 @@
   <meta property="og:description" content="فریلنسری خلاق برای پروژه‌های تایپ، طراحی، پاورپوینت، و بیشتر!" />
   <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/3/32/Fantasy_Phoenix_Fire.png" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" />
+
   <style>
     * {
       box-sizing: border-box;
@@ -129,15 +130,37 @@
       to { opacity: 1; }
     }
 
-    a {
-      color: #ffcc80;
-      font-weight: bold;
-      text-decoration: none;
+    .social-buttons {
+      margin-top: 35px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      animation: fadeInText 4s ease forwards;
     }
 
-    a:hover {
-      color: #ffc107;
-      text-shadow: 0 0 8px #ffc107;
+    .social-buttons a {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-buttons a.telegram {
+      background: linear-gradient(135deg, #29b6f6, #039be5);
+      box-shadow: 0 0 10px rgba(3, 169, 244, 0.4);
+    }
+
+    .social-buttons a.rubika {
+      background: linear-gradient(135deg, #ff7043, #ff8a65);
+      box-shadow: 0 0 10px rgba(255, 140, 0, 0.5);
+    }
+
+    .social-buttons a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 14px rgba(255, 255, 255, 0.2);
     }
 
     @media (max-width: 480px) {
@@ -162,6 +185,12 @@
   <div class="card">
     <h2 id="title">سلام <span class="star">🌟</span></h2>
     <p id="message">در حال بارگذاری...</p>
+
+    <!-- دکمه‌های ارتباط -->
+    <div class="social-buttons">
+      <a href="https://rubika.ir/Vina_design" target="_blank" rel="noopener noreferrer" class="rubika">📱 ارتباط در روبیکا</a>
+      <a href="https://t.me/Vina_design" target="_blank" rel="noopener noreferrer" class="telegram">💬 ارتباط در تلگرام</a>
+    </div>
   </div>
 
   <script defer>
@@ -189,15 +218,6 @@
 - رفع ارور و مشکلات نرم‌افزاری گوشی و کامپیوترت 🔧
 
 💬 فقط کافیه پیام بدی... سریع و رفیق‌وار راه می‌ندازمش ✅
-
-📱 اگه فیلترشکنت روشن نیست، نگران نباش!
-ما رو می‌تونی راحت تو روبیکا دنبال کنی:
-👉 <a href="https://rubika.ir/Vina_design" target="_blank" rel="noopener noreferrer">رفتن به صفحه روبیکا Vina_design 🔗</a>
-
-🚀 و اگه روبیکا نداری یا ترجیح می‌دی تو تلگرام باشی، فقط کافیه یه لحظه فیلترشکنتو روشن کنی و بزنی روی لینک زیر:
-👉 <a href="https://t.me/Vina_design" target="_blank" rel="noopener noreferrer">رفتن به کانال تلگرام Vina_design 🔗</a>
-
-منتظرم که با هم پروژه‌های خفن بسازیم 😄✌️
 `;
 
     const el = document.getElementById('message');
