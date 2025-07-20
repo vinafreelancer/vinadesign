@@ -2,8 +2,8 @@
 <html lang="fa">
 <head>
   <meta charset="UTF-8" />
-  <title> 😎Vina_design😎 </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>😎 Vina_design 😎</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css');
 
@@ -18,7 +18,7 @@
       direction: rtl;
       background: linear-gradient(135deg, #A0E7E5, #b2f7ef, #B6E2D3);
       background-size: 400% 400%;
-      animation: gradientFlow 18s ease infinite;
+      animation: gradientFlow 20s ease infinite;
       color: #0F3D3E;
       min-height: 100vh;
       display: flex;
@@ -29,21 +29,21 @@
     }
 
     @keyframes gradientFlow {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.95);
       border-radius: 28px;
       padding: 40px 50px;
       max-width: 700px;
       width: 90%;
       box-shadow: 0 15px 45px rgba(0, 128, 128, 0.2), 0 0 15px rgba(72, 187, 173, 0.25);
       text-align: center;
-      animation: fadeInUp 1.2s ease-out both;
       backdrop-filter: blur(8px);
+      animation: fadeInUp 1.2s ease-out both;
     }
 
     @keyframes fadeInUp {
@@ -62,18 +62,32 @@
       margin-bottom: 25px;
       color: #11999E;
       position: relative;
+      display: inline-block;
+      animation: slideIn 1.5s ease-out both;
     }
 
     .star {
       color: #FFD700;
-      margin-left: 6px;
-      animation: twinkle 2s infinite alternate;
+      margin-left: 8px;
+      animation: twinkle 1.8s infinite ease-in-out;
       display: inline-block;
     }
 
     @keyframes twinkle {
-      0% {opacity: 1; transform: scale(1);}
-      100% {opacity: 0.6; transform: scale(1.2);}
+      0%   { opacity: 1; transform: scale(1) rotate(0); }
+      50%  { opacity: 0.6; transform: scale(1.2) rotate(15deg); }
+      100% { opacity: 1; transform: scale(1) rotate(0); }
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(-20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
     p {
@@ -81,6 +95,13 @@
       line-height: 2.4;
       white-space: pre-wrap;
       color: #222;
+      text-align: justify;
+      animation: fadeInText 2s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeInText {
+      to { opacity: 1; }
     }
 
     a {
@@ -93,6 +114,20 @@
     a:hover {
       color: #28c3c9;
       text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 30px 20px;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -138,7 +173,21 @@
 `;
 
     document.getElementById('title').innerHTML = title;
-    document.getElementById('message').innerHTML = message;
+
+    // افکت تایپ‌مانند برای متن پیام
+    const msgEl = document.getElementById('message');
+    let index = 0;
+    const speed = 2; // میلی‌ثانیه بین حروف
+
+    function typeMessage() {
+      if (index < message.length) {
+        msgEl.innerHTML += message.charAt(index);
+        index++;
+        setTimeout(typeMessage, speed);
+      }
+    }
+
+    typeMessage();
   </script>
 </body>
 </html>
