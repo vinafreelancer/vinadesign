@@ -117,7 +117,8 @@
       background-color: rgba(255, 255, 255, 0.25);
     }
 
-    button {
+    button,
+    .social-button {
       width: 100%;
       padding: 12px;
       font-size: 15px;
@@ -130,9 +131,11 @@
       font-weight: bold;
       transition: background 0.3s ease, transform 0.2s ease;
       animation: fadeIn 2.4s ease-out;
+      display: inline-block;
     }
 
-    button:hover {
+    button:hover,
+    .social-button:hover {
       background: #d43838;
       transform: translateY(-3px);
     }
@@ -155,6 +158,14 @@
     @keyframes fadeIn {
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .social-links {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      animation: fadeIn 2.6s ease-out;
     }
 
     @media (max-width: 480px) {
@@ -184,6 +195,11 @@
     
     <button onclick="goToProfile()">شروع کن</button>
     <div class="error" id="errorMsg">لطفاً هر دو فیلد رو پر کن :)</div>
+
+    <div class="social-links">
+      <a class="social-button" href="https://t.me/YourTelegramUsername" target="_blank">💬 ارتباط در تلگرام</a>
+      <a class="social-button" href="https://rubika.ir/YourRubikaID" target="_blank">📱 ارتباط در روبیکا</a>
+    </div>
   </div>
 
   <script>
