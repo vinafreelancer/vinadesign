@@ -2,25 +2,24 @@
 <html lang="fa">
 <head>
   <meta charset="UTF-8" />
-  <title>نمایش همکاری</title>
+  <title> 😎Vina_design😎 </title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css');
 
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
       font-family: 'Vazir', Tahoma, sans-serif;
       direction: rtl;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #1f1c2c, #928DAB); /* گرادیان جذاب و لطیف */
-      background-attachment: fixed;
+      background: linear-gradient(135deg, #A0E7E5, #b2f7ef, #B6E2D3);
       background-size: 400% 400%;
-      animation: gradientFlow 20s ease infinite;
-      color: #F5F5F5;
+      animation: gradientFlow 18s ease infinite;
+      color: #0F3D3E;
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -36,14 +35,15 @@
     }
 
     .card {
-      background: rgba(48, 71, 94, 0.95);
-      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 28px;
       padding: 40px 50px;
       max-width: 700px;
       width: 90%;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 40px rgba(240, 84, 84, 0.3);
+      box-shadow: 0 15px 45px rgba(0, 128, 128, 0.2), 0 0 15px rgba(72, 187, 173, 0.25);
       text-align: center;
-      animation: fadeInUp 1.6s ease-out both;
+      animation: fadeInUp 1.2s ease-out both;
+      backdrop-filter: blur(8px);
     }
 
     @keyframes fadeInUp {
@@ -58,35 +58,14 @@
     }
 
     h2 {
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       margin-bottom: 25px;
-      color: #F05454;
-      animation: flicker 2s infinite;
-    }
-
-    @keyframes flicker {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.7; }
-    }
-
-    p {
-      font-size: 1.1rem;
-      line-height: 2.2;
-      white-space: pre-wrap;
-    }
-
-    a {
-      color: #F5F5F5;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
+      color: #11999E;
+      position: relative;
     }
 
     .star {
-      color: #ffb300;
+      color: #FFD700;
       margin-left: 6px;
       animation: twinkle 2s infinite alternate;
       display: inline-block;
@@ -95,6 +74,25 @@
     @keyframes twinkle {
       0% {opacity: 1; transform: scale(1);}
       100% {opacity: 0.6; transform: scale(1.2);}
+    }
+
+    p {
+      font-size: 1.15rem;
+      line-height: 2.4;
+      white-space: pre-wrap;
+      color: #222;
+    }
+
+    a {
+      color: #11999E;
+      font-weight: bold;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #28c3c9;
+      text-decoration: underline;
     }
   </style>
 </head>
