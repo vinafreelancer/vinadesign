@@ -2,8 +2,8 @@
 <html lang="fa">
 <head>
   <meta charset="UTF-8" />
-  <title> 👋 Vina_design 👋 </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>👋 Vina_design 👋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   
   <style>
     @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css');
@@ -21,17 +21,30 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
     }
 
     .form-card {
-      background: #f8f8f8;
+      background: #fefefe;
       padding: 40px 30px;
-      border-radius: 16px;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
       max-width: 400px;
       width: 90%;
       text-align: center;
       z-index: 1;
+      animation: fadeSlideIn 1.2s ease-out;
+    }
+
+    @keyframes fadeSlideIn {
+      0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
 
     .form-card img {
@@ -41,18 +54,32 @@
       object-fit: cover;
       margin-bottom: 15px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      animation: pulse 3s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(240, 84, 84, 0.4);
+      }
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px 5px rgba(240, 84, 84, 0.25);
+      }
     }
 
     h2 {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       color: #F05454;
       margin: 10px 0;
+      animation: fadeIn 1.6s ease-out;
     }
 
     p {
-      color: #555;
+      color: #666;
       font-size: 0.95rem;
       margin-bottom: 25px;
+      animation: fadeIn 2s ease-out;
     }
 
     input {
@@ -61,9 +88,10 @@
       font-size: 15px;
       margin-bottom: 15px;
       border: 1px solid #ccc;
-      border-radius: 10px;
+      border-radius: 12px;
       background-color: #eef1ff;
-      transition: border-color 0.3s ease, background-color 0.3s ease;
+      transition: border-color 0.3s, background-color 0.3s;
+      animation: fadeIn 2.2s ease-out;
     }
 
     input:focus {
@@ -84,11 +112,12 @@
       cursor: pointer;
       font-weight: bold;
       transition: background 0.3s ease, transform 0.2s ease;
+      animation: fadeIn 2.4s ease-out;
     }
 
     button:hover {
       background: #c0392b;
-      transform: translateY(-2px);
+      transform: translateY(-3px);
     }
 
     .error {
@@ -96,6 +125,19 @@
       font-size: 14px;
       margin-top: 8px;
       display: none;
+      animation: shake 0.4s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     @media (max-width: 480px) {
@@ -104,14 +146,13 @@
       }
 
       h2 {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
       }
     }
   </style>
 </head>
 <body>
   <div class="form-card">
-    <!-- لوگو با حالت گرد -->
     <img src="https://s6.uupload.ir/files/use_hex_colors_121212,_30475e,_f5f5f5,_and_f05454_in_the_logo_and_background_and_create_an_attractive_design._6tzl.png" alt="لوگو">
 
     <h2>👋 سلام</h2>
@@ -136,9 +177,11 @@
         window.location.href = `profile.html?name=${encodedName}&field=${encodedField}`;
       } else {
         errorMsg.style.display = "block";
+        errorMsg.style.animation = "shake 0.4s ease";
+
         setTimeout(() => {
           errorMsg.style.display = "none";
-        }, 3000);
+        }, 2500);
       }
     }
   </script>
