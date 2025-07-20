@@ -1,95 +1,146 @@
-<style>
-  @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css');
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <title>نمایش همکاری</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css');
 
-  * {
-    box-sizing: border-box;
-    font-family: 'Vazir', Tahoma, sans-serif;
-  }
-
-  body {
-    margin: 0;
-    padding: 0;
-    direction: rtl;
-    min-height: 100vh;
-    background: linear-gradient(to bottom right, #e0f7fa, #ffffff); /* جدید */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 20px;
-  }
-
-  .card {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 40px 30px;
-    width: 100%;
-    max-width: 720px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    text-align: center;
-    color: #222;
-    animation: fadeIn 1.3s ease forwards;
-    border: 1px solid #d9f0f2;
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
+    * {
+      box-sizing: border-box;
     }
-    to {
-      opacity: 1;
-      transform: translateY(0);
+
+    body {
+      font-family: 'Vazir', Tahoma, sans-serif;
+      direction: rtl;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #1f1c2c, #928DAB); /* گرادیان جذاب و لطیف */
+      background-attachment: fixed;
+      background-size: 400% 400%;
+      animation: gradientFlow 20s ease infinite;
+      color: #F5F5F5;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 60px;
+      overflow-y: auto;
     }
-  }
 
-  h2 {
-    font-size: 2rem;
-    color: #f05454;
-    margin-bottom: 20px;
-  }
+    @keyframes gradientFlow {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
 
-  .star {
-    display: inline-block;
-    margin-right: 6px;
-    animation: twinkle 2s infinite alternate;
-  }
-
-  @keyframes twinkle {
-    0% { opacity: 1; transform: scale(1); }
-    100% { opacity: 0.6; transform: scale(1.2); }
-  }
-
-  p {
-    font-size: 1.05rem;
-    line-height: 2.2;
-    white-space: pre-wrap;
-    color: #444;
-  }
-
-  a {
-    color: #f05454;
-    font-weight: bold;
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
-    color: #c0392b;
-  }
-
-  @media (max-width: 600px) {
     .card {
-      padding: 30px 20px;
+      background: rgba(48, 71, 94, 0.95);
+      border-radius: 25px;
+      padding: 40px 50px;
+      max-width: 700px;
+      width: 90%;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 40px rgba(240, 84, 84, 0.3);
+      text-align: center;
+      animation: fadeInUp 1.6s ease-out both;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
 
     h2 {
-      font-size: 1.6rem;
+      font-size: 2.2rem;
+      margin-bottom: 25px;
+      color: #F05454;
+      animation: flicker 2s infinite;
+    }
+
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
     }
 
     p {
-      font-size: 1rem;
+      font-size: 1.1rem;
+      line-height: 2.2;
+      white-space: pre-wrap;
     }
-  }
-</style>
+
+    a {
+      color: #F5F5F5;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .star {
+      color: #ffb300;
+      margin-left: 6px;
+      animation: twinkle 2s infinite alternate;
+      display: inline-block;
+    }
+
+    @keyframes twinkle {
+      0% {opacity: 1; transform: scale(1);}
+      100% {opacity: 0.6; transform: scale(1.2);}
+    }
+  </style>
+</head>
+<body>
+  <div class="card" role="main" aria-labelledby="title" aria-describedby="message">
+    <h2 id="title">سلام <span class="star">🌟</span></h2>
+    <p id="message">در حال بارگذاری...</p>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get('name') || 'دوست';
+    const field = params.get('field') || 'رشته‌ات';
+
+    const title = `سلام ${name} عزیز 🌟`;
+    const message = `
+🎉 ${name} عزیز، سلام و درود! 🎉
+
+خیلی خوشحال شدم که با یه فرد باانرژی و فعال در زمینه «${field}» آشنا شدم 😍
+
+اگه دنبال کسی هستی که کارای فریلنسری‌تو با دقت، سرعت و کیفیت بالا انجام بده، جای درستی اومدی! 😎
+
+من اینجام تا تو تایپ، تایپ صوتی، پاورپوینت‌های حرفه‌ای، طراحی بروشور و اینفوگرافی، پروژه‌های دانشجویی و حتی رفع مشکلات نرم‌افزاری سیستم و گوشیت کمکت کنم 💪
+
+📌 چی کار می‌کنم؟  
+- تایپ سریع و بدون غلط ⌨️  
+- تایپ ویس (صوتی) با دقت بالا 🎧  
+- ساخت پاورپوینت‌های خاص و حرفه‌ای 🎨  
+- انجام پروژه‌های دانشجویی با کیفیت بالا 📚  
+- طراحی بروشور، پوستر، اینفوگرافی و ... 🏇  
+- رفع ارور و مشکلات نرم‌افزاری گوشی و کامپیوترت 🔧
+
+💬 فقط کافیه پیام بدی... سریع و رفیق‌وار راه می‌ندازمش ✅
+
+📱 اگه فیلترشکنت روشن نیست، نگران نباش!  
+ما رو می‌تونی راحت تو روبیکا دنبال کنی:  
+👉 <a href="https://rubika.ir/Vina_design" target="_blank">Vina_design در روبیکا</a>
+
+🚀 و اگه روبیکا نداری یا ترجیح می‌دی تو تلگرام باشی، فقط کافیه یه لحظه فیلترشکنتو روشن کنی و بزنی روی لینک زیر:  
+👉 <a href="https://t.me/Vina_design" target="_blank">Vina_design در تلگرام</a>
+
+منتظرم که با هم پروژه‌های خفن بسازیم 😄✌️
+`;
+
+    document.getElementById('title').innerHTML = title;
+    document.getElementById('message').innerHTML = message;
+  </script>
+</body>
+</html>
